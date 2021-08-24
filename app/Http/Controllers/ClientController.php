@@ -11,6 +11,11 @@ use Auth;
 class ClientController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware(['role:admin'])->only('create');
+        $this->middleware(['role:admin|user'])->only(['edit','destroy']);
+    }
     /**
      * Display a listing of the resource.
      *
