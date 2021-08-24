@@ -25,7 +25,7 @@ class Client extends Model
 
     public function getFullAddressAttribute()
     {
-        return $this->country_code.' '.$this->zip_code;
+        return "{$this->country_code} {$this->zip_code}";
     }
 
 }
