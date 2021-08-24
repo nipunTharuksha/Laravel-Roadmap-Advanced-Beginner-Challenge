@@ -16,10 +16,7 @@ class ClientStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return (Auth::id() && (Auth::user()->hasRole('admin') ||
-                (Auth::user()->hasRole('user') && (Auth::id() === (int) $this->created_by))
-            )
-        );
+        return (Auth::user()->hasAnyRole(['admin','user']) && (Auth::id() === (int) $this->created_by));
     }
 
     /**
