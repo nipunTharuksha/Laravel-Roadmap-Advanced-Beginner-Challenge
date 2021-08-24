@@ -15,7 +15,7 @@ class ProjectStoreRequest extends FormRequest
      */
     public function authorize()
     {
-        return (Auth::id() &&(Auth::user()->hasRole(['admin','user'])));
+        return Auth::user()->hasRole(['admin','user']);
     }
 
     /**
