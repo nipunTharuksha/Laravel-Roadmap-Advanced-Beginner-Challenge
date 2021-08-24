@@ -10,6 +10,11 @@ use Auth;
 
 class ClientController extends Controller
 {
+    
+    public function __construct()
+    {
+        $this->middleware(['role:admin'])->only('create');
+    }
 
     /**
      * Display a listing of the resource.
@@ -30,7 +35,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        abort_if(!Auth::user()->hasRole('admin'), 401, __('Not Allowed action'));
+       // abort_if(!Auth::user()->hasRole('admin'), 401, __('Not Allowed action'));
         return view('clients.create');
     }
 
